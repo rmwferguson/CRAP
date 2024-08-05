@@ -1,0 +1,108 @@
+
+A script to make an example of the plot we want under the main map
+
+```{r}
+
+library(tidyverse) 
+
+```
+
+
+```{r}
+
+getwd()
+
+
+list.files("./data")
+```
+
+
+read in data
+
+
+```{r}
+
+data <- read_csv("./data/DataCollectionForm - WQ data(1).csv",
+                 na = c("NC", "NA", "R"))  # we need to sort out this coding of NC and R 
+                 
+                 
+
+head(data)
+```
+
+
+```{}
+as.Date(data$`dateCollected (dd/mm/yy)`, "%d/%m/%Y")
+
+```
+
+```{r}
+
+data %>%
+#  filter(Waterway == "Blackwater") %>%
+
+ggplot(aes(y = ESBL, x = as.Date(`dateCollected (dd/mm/yy)`, "%d/%m/%Y")))+
+  geom_point(aes(col = Waterway))+
+  geom_smooth()+
+#  scale_y_continuous(trans='log10')+
+  geom_hline(yintercept=1000)+
+#  coord_cartesian(ylim = c(0, 10000))+
+  
+  theme_bw()
+
+#  geom_point()
+
+
+
+
+```
+
+
+
+
+
+
+```{r}
+# need to change month to dlb jam = 1 etc.
+
+data %>%
+#  filter(Waterway == "Blackwater") %>%
+
+ggplot(aes(y = ESBL, x = month))+
+  geom_point(aes(col = Waterway))+
+  geom_smooth()+
+#  scale_y_continuous(trans='log10')+
+  geom_hline(yintercept=1000)+
+#  coord_cartesian(ylim = c(0, 10000))+
+  
+  theme_bw()
+
+#  geom_point()
+
+
+
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
