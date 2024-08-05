@@ -1,5 +1,3 @@
 # CRAP
 
-
-Added rscript to start working on plots
-edidted some dates that are wrong year in the data
+Code to make a map of water qualtiy data
